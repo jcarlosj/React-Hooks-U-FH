@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import { App } from './App';
-import { CounterApp } from './components/use-state/CounterApp';
+import { CounterHookApp } from './components/use-state/CounterHookApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CounterApp />
+    <CounterHookApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
