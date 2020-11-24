@@ -9,7 +9,7 @@ export const CounterHookApp = () => {
 
     const
         factor = 3, 
-        { state:counter, increment, decrement } = useCounter( 9 );
+        { state:counter, increment, decrement, reset } = useCounter( 9 );
 
     return (
         <section className="container mt-5">
@@ -20,6 +20,10 @@ export const CounterHookApp = () => {
                 className="btn btn-primary m-1"
                 onClick={ () => increment( factor ) }
             >+{ factor }</button>   
+            <button 
+                className="btn btn-primary m-1"
+                onClick={ reset }
+            >Reset</button>   
             <button 
                 className="btn btn-primary m-1"
                 onClick={ () => decrement( factor ) }
