@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './counter-app.css';
 
-export const CounterApp = () => {
+export const CounterApp = ({ initialValue = 10 }) => {
+
+    const [ counter, setCounter ] = useState( initialValue );
+
     return (
         <section className="container mt-5">
-            <h1>Counter { 0 }</h1>
+            <h1>Counter { counter }</h1>
             <hr />
-            <button className="btn btn-primary">+1</button>   
+            <button 
+                className="btn btn-primary"
+                onClick={ () => {
+                    setCounter( counter + 1 );
+                } }
+            >+1</button>   
         </section>
     )
 }
