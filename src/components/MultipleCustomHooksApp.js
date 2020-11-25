@@ -2,15 +2,18 @@ import React from 'react';
 
 /** Hooks */
 import { useFetch } from '../hooks/useFetch';
+import { useCounter } from '../hooks/useCounter';
 
 /** Functional Component */
 export const MultipleCustomHooksApp = () => {
 
     const 
-        { loading, data } = useFetch( `https://www.breakingbadapi.com/api/quotes/1` ),
+        { state:counter, increment } = useCounter( 1 ),
+        { loading, data } = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` ),
         { author, quote } = !!data && data[ 0 ];    //  !!null -> Convertir un null en false
 
-    console.log( quote, '(', author, ')' );
+    console.log( counter , ' - ' , quote, '(', author, ')' );
+    // console.log( Object.keys( state ) );
 
     return (
         <section className="container mt-5">
@@ -20,10 +23,19 @@ export const MultipleCustomHooksApp = () => {
     
             {   loading  
                     ?   <p className="alert alert-info text-center">Loading...</p> 
-                    :   <blockquote className="blockquote text-right">
-                            <p className="mb-0">{ quote }</p>
-                            <footer className="blockquote-footer">{ author }</footer>
-                        </blockquote>
+                    :   <>
+
+                            <blockquote className="blockquote text-right">
+                                <p className="mb-0">{ quote }</p>
+                                <footer className="blockquote-footer">{ author }</footer>
+                            </blockquote>
+
+                            <button
+                                className="btn btn-primary"
+                                onClick={ () => increment() }
+                            >Next Quote</button>
+
+                        </>
             }
             
         </section>
