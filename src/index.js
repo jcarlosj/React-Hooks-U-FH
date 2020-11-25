@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import { App } from './App';
-import { SimpleFormApp } from './components/use-effect/SimpleFormApp';
+import { SimpleFormHookApp } from './components/use-effect/SimpleFormHookApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SimpleFormApp />
+    <SimpleFormHookApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
