@@ -50,7 +50,7 @@ export const SimpleFormApp = () => {
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder="Tu nombre"
+                    placeholder="Escribe 'sofia'"
                     autoComplete="off"
                     value={ name }
                     onChange={ handleInputChange }  
@@ -69,7 +69,7 @@ export const SimpleFormApp = () => {
                 />
             </div>
 
-            { name && <Message /> }
+            { name === 'sofia' && <Message /> }
 
         </section>
     )
