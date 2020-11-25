@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
+/** Components */
+import { Message } from './Message';
+
 import './use-effects.css';
 
+/** Funcional Component */
 export const SimpleFormApp = () => {
 
     const 
@@ -64,6 +68,8 @@ export const SimpleFormApp = () => {
                     onChange={ handleInputChange }  
                 />
             </div>
+
+            { name && <Message /> }
 
         </section>
     )
