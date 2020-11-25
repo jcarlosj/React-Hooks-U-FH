@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+
+/** Hooks */
+import { useForm } from '../../hooks/useForm';
 
 import './use-effects.css';
 
@@ -6,21 +9,16 @@ import './use-effects.css';
 export const SimpleFormHookApp = () => {
 
     const 
-        [ formState, setFormState] = useState( {
+        [ formValues, handleInputChange ] = useForm( {
             name: '',
             email: '',
             password: ''
         } ),
-        { name, email, password } = formState;
+        { name, email, password } = formValues;
 
-    const handleInputChange = ({ target }) => {
-        console.log( '>', target.name, target.value );
-
-        setFormState({      //  Actualiza State
-            ...formState,
-            [ target.name ]: target.value
-        });
-    }
+    useEffect(() => {
+        console.log( 'Email cambió' );
+    }, [ email ]);
 
     return (
         <section className="container mt-5">
@@ -33,7 +31,7 @@ export const SimpleFormHookApp = () => {
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder="Escribe 'sofia'"
+                    placeholder="Tu nombre"
                     autoComplete="off"
                     value={ name }
                     onChange={ handleInputChange }  
