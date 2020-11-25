@@ -11,6 +11,13 @@ export const useFetch = ( url ) => {
     });
 
     useEffect(() => {
+
+        /** Establece el State para permitir la carga del Loading entre frases */
+        setState({
+            data: null,
+            loading: true,
+            error: null
+        });
         
         fetch( url )
             .then( response => response.json() )
