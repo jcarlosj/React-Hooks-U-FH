@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import { App } from './App';
-import { FocusScreenApp } from './components/use-ref/FocusScreenApp';
+import { RealExampleRef } from './components/use-ref/RealExampleRef';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FocusScreenApp />
+    <RealExampleRef />
   </React.StrictMode>,
   document.getElementById('root')
 );
