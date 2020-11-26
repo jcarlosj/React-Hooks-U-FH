@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import { App } from './App';
-import { MultipleCustomHooksApp } from './components/MultipleCustomHooksApp';
+import { FocusScreenApp } from './components/use-ref/FocusScreenApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MultipleCustomHooksApp />
+    <FocusScreenApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
