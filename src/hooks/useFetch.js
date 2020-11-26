@@ -24,12 +24,13 @@ export const useFetch = ( url ) => {
             .then( data => {
 
                 //  TO DO: Evaluar que viene la data
-
-                setState({
-                    data,
-                    loading: false,
-                    error: null
-                });
+                setTimeout( () => {
+                    setState({
+                        data,
+                        loading: false,
+                        error: null
+                    });
+                }, 4000 );
 
             });
 
