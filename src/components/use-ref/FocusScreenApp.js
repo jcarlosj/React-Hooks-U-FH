@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 export const FocusScreenApp = () => {
 
+    const inputRef = useRef();
+
     const handleClick = () => {
-        document.querySelector( 'input' ).select();     //  document.querySelector( 'input' ).focus();
+        inputRef.current.select();     //  document.querySelector( 'input' ).focus();
+        console.log( inputRef );
     }
 
     return (
@@ -15,6 +18,7 @@ export const FocusScreenApp = () => {
                 <input 
                     className="form-control"
                     placeholder="Tu nombre"
+                    ref={ inputRef }
                 />
             </div>
 
