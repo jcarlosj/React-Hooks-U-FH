@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /** Components */
 import { CounterSample } from './CounterSample';
@@ -13,17 +13,22 @@ export const CounterMemorizeApp = () => {
 
     const
         factor = 1, 
-        { state:counter, increment } = useCounter( 1 );
+        { state:counter, increment } = useCounter( 1 ),
+        [ state, setState ] = useState( true );
 
     return (
         <section className="container mt-5">
             <h1>Counter <CounterSample value={ counter } /> </h1>
-            <p>Usando un Hook personalizado</p>
+            <p>La acción del botón renderiza el componente segundario (ver: consola del navegador)</p>
             <hr />
             <button 
                 className="btn btn-primary m-1"
                 onClick={ () => increment( factor ) }
-            >+{ factor }</button>   
+            >+{ factor }</button> 
+            <button 
+                className="btn btn-outline-primary m-1"
+                onClick={ () => setState( ! state ) }
+            >{ JSON.stringify( state ) }</button>   
         </section>
     )
 }
