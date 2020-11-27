@@ -3,6 +3,9 @@ import React, { useState, useMemo } from 'react';
 /** Custom Hooks */
 import { useCounter } from '../../hooks/useCounter';
 
+/** Helpers */
+import { procesoPesado } from '../../helpers/procesoPesadoHelper';
+
 import './counter-use-memo-app.css';
 
 /** Functional Component */
@@ -12,15 +15,6 @@ export const CounterMemoHookApp = () => {
         factor = 1, 
         { state:counter, increment } = useCounter( 7000 ),
         [ state, setState ] = useState( true );
-
-    const procesoPesado = ( iteraciones ) => {
-
-        for( let i = 0; i < iteraciones; i ++ ) {
-            console.log( `Iterando...` );
-        }
-
-        return iteraciones;
-    }
 
     const procesoMemorizado = useMemo( () => procesoPesado( counter ), [ counter ] );
 
