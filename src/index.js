@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import { App } from './App';
-import { RealExampleUseLayoutEffectApp } from './components/use-layout-effect/RealExampleUseLayoutEffectApp';
+import { CounterMemorizeApp } from './components/memo/CounterMemorizeApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RealExampleUseLayoutEffectApp />
+    <CounterMemorizeApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
