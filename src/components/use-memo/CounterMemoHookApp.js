@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 /** Custom Hooks */
 import { useCounter } from '../../hooks/useCounter';
@@ -22,11 +22,13 @@ export const CounterMemoHookApp = () => {
         return iteraciones;
     }
 
+    const procesoMemorizado = useMemo( () => procesoPesado( counter ), [ counter ] );
+
     return (
         <section className="container mt-5">
             <h1>Counter: { counter }</h1>
             <p>Usando un Hook useMemo</p>
-            <p><em><strong>{ procesoPesado( counter ) }</strong> iteraciones realizadas</em> que se repetiran ante cualquier interaccion que cambie el estado del componente</p>
+            <p><em><strong>{ procesoMemorizado }</strong> iteraciones realizadas</em> que se repetiran ante cualquier interaccion que cambie el estado del componente (ver: consola navegador)</p>
             <hr />
             <button 
                 className="btn btn-primary m-1"
