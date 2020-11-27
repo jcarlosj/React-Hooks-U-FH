@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import { App } from './App';
-import { CounterMemorizeApp } from './components/memo/CounterMemorizeApp';
+import { CounterMemoHookApp } from './components/use-memo/CounterMemoHookApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CounterMemorizeApp />
+    <CounterMemoHookApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
