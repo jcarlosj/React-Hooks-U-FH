@@ -1,10 +1,14 @@
 import React from 'react';
 
+/** Components */
+import { CounterSample } from './CounterSample';
+
 /** Custom Hooks */
 import { useCounter } from '../../hooks/useCounter';
 
 import './counter-memorize-app.css';
 
+/** Functional Component */
 export const CounterMemorizeApp = () => {
 
     const
@@ -13,7 +17,7 @@ export const CounterMemorizeApp = () => {
 
     return (
         <section className="container mt-5">
-            <h1>Counter: { counter }</h1>
+            <h1>Counter <CounterSample value={ counter } /> </h1>
             <p>Usando un Hook personalizado</p>
             <hr />
             <button 
