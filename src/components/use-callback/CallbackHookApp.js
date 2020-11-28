@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+/** Components */
+import { IncreaseButton } from './IncreaseButton';
+
 import './use-callback-app.css';
 
 /** Functional Component */
@@ -16,6 +19,7 @@ export const CallbackHookApp = () => {
             <h1>Counter { counter }</h1>
             <p>Usando un Hook useCallback</p>
             <hr />
+            <IncreaseButton increment={ increment } />
         </section>
     )
 }
