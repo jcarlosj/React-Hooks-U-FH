@@ -10,8 +10,8 @@ export const CallbackHookApp = () => {
 
     const [ counter, setCounter ] = useState( 10 );
 
-    const increment = useCallback( () => {
-        setCounter( c => c + 1 );       //  No usar setCounter( counter + 1 ) usar la version de Callback
+    const increment = useCallback( ( num ) => {
+        setCounter( c => c + num );       //  No usar setCounter( counter + 1 ) usar la version de Callback
     }, [ setCounter ] );
 
     return (

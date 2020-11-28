@@ -8,10 +8,10 @@ export const IncreaseButton = memo( ({ increment }) => {
         <button
             className="btn btn-primary"
             onClick={ () => {
-                increment();
+                increment( 5 );
             } }
         >
-            Increment
+            Increment 5
         </button>
     )
 });
