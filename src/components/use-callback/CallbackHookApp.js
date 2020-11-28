@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 /** Components */
 import { IncreaseButton } from './IncreaseButton';
@@ -10,9 +10,9 @@ export const CallbackHookApp = () => {
 
     const [ counter, setCounter ] = useState( 10 );
 
-    const increment = () => {
-        setCounter( counter + 1 );
-    }
+    const increment = useCallback( () => {
+        setCounter( c => c + 1 );       //  No usar setCounter( counter + 1 ) usar la version de Callback
+    }, [ setCounter ] );
 
     return (
         <section className="container mt-5">

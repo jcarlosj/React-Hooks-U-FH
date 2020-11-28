@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export const IncreaseButton = ({ increment }) => {
+export const IncreaseButton = memo( ({ increment }) => {
 
     console.log( 'IncreaseButton se renderiza' );
 
@@ -14,4 +14,4 @@ export const IncreaseButton = ({ increment }) => {
             Increment
         </button>
     )
-}
+});
