@@ -1,0 +1,9 @@
+p.task-description {
+    cursor: pointer;
+    margin: 0;
+    padding: .375rem .75rem;
+}
+
+.complete {
+    text-decoration: line-through;
+} 
