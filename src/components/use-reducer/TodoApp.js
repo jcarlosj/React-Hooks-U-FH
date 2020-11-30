@@ -28,6 +28,18 @@ export const TodoApp = () => {
         localStorage.setItem( 'todos', JSON.stringify( todos ) );   //  Guardar data en el LocalStorage
     }, [ todos ] );
 
+    const handleDelete = id_task => {
+        // console.log( id_task );
+
+        const action = {
+            type: 'DELETE',
+            payload: id_task
+        }
+
+        dispatch( action );
+
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -100,7 +112,10 @@ export const TodoApp = () => {
                                         className="list-group-item d-inline-flex align-items-center"
                                     >
                                         <p className="task-description">{ idx + 1 }. { todo.description }</p>
-                                        <button className="btn btn-danger">Borrar</button>
+                                        <button 
+                                            className="btn btn-danger"
+                                            onClick={ () => handleDelete( todo.id ) }
+                                        >Borrar</button>
                                     </li>
                                 ))
                         }
