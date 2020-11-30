@@ -10,7 +10,7 @@ export const TodoList = ({ todos, handleDelete, handleToggle }) => {
         <ul className="list-group list-group-flush">
             {    todos.map( ( todo, idx ) => (
                     <TodoItem 
-                        key={ idx }
+                        key={ todo.id }
                         idx={ idx } 
                         todo={ todo }
                         handleToggle={ handleToggle }
