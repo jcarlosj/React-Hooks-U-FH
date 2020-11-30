@@ -1,5 +1,8 @@
 import React, { useReducer } from 'react';
 
+/** Hooks */
+import { useForm } from '../../hooks/useForm';
+
 /** Reducer */
 import { todoReducer } from './todoReducer';
 
@@ -16,16 +19,24 @@ const initialState = [{
 /** Functional Component */
 export const TodoApp = () => {
 
-    const [ todos, dispatch ] = useReducer( todoReducer, initialState );
+    const 
+        [ todos, dispatch ] = useReducer( todoReducer, initialState ),
+        [ formValues, handleInputChange, reset ] = useForm({
+            description: ''
+        });
 
-    console.log( todos );
+    console.log( formValues );
 
     const handleSubmit = event => {
         event.preventDefault();
 
+        if( formValues.description.trim().length <= 1 ) {
+            return;
+        }
+
         const newTodo = {
             id: new Date().getTime(),
-            description: 'Aprender Vue',
+            description: formValues.description,
             done: false
         }
 
@@ -35,6 +46,7 @@ export const TodoApp = () => {
         }
 
         dispatch( action );
+        reset();
 
     }
 
@@ -58,6 +70,8 @@ export const TodoApp = () => {
                             placeholder="Descripción Tarea"
                             autoComplete="off"
                             className="form-control"
+                            value={ formValues.description }
+                            onChange={ handleInputChange }
                         />
                         <button 
                             type="submit"
