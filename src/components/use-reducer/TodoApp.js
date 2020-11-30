@@ -1,13 +1,11 @@
 import React, { useEffect, useReducer } from 'react';
 
-/** Hooks */
-import { useForm } from '../../hooks/useForm';
-
 /** Reducer */
 import { todoReducer } from './todoReducer';
 
 /** Components */
 import { TodoList } from './TodoList';
+import { TodoForm } from './TodoForm';
 
 import './todo-app.css';
 
@@ -19,17 +17,22 @@ const init = () => {
 /** Functional Component */
 export const TodoApp = () => {
 
-    const 
-        [ todos, dispatch ] = useReducer( todoReducer, [], init ),      //  Establece State usando Inicialización diferida del Reducer. permite extraer la lógica para calcular el estado inicial fuera del reductor. También es útil para reiniciar el estado luego en respuesta a una acción. 
-        [ formValues, handleInputChange, reset ] = useForm({
-            description: ''
-        });
+    const [ todos, dispatch ] = useReducer( todoReducer, [], init );      //  Establece State usando Inicialización diferida del Reducer. permite extraer la lógica para calcular el estado inicial fuera del reductor. También es útil para reiniciar el estado luego en respuesta a una acción. 
 
-    console.log( formValues );
+    // console.log( todos );
 
     useEffect(() => {
         localStorage.setItem( 'todos', JSON.stringify( todos ) );   //  Guardar data en el LocalStorage
     }, [ todos ] );
+
+    const handleAddTodo = newTodo => {
+
+        dispatch({
+            type: 'ADD',
+            payload: newTodo
+        });
+
+    }
 
     const handleDelete = id_task => {
         // console.log( id_task );
@@ -52,29 +55,6 @@ export const TodoApp = () => {
 
     } 
 
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        if( formValues.description.trim().length <= 1 ) {
-            return;
-        }
-
-        const newTodo = {
-            id: new Date().getTime(),
-            description: formValues.description,
-            done: false
-        }
-
-        const action = {
-            type: 'ADD',
-            payload: newTodo
-        }
-
-        dispatch( action );
-        reset();
-
-    }
-
     return (
         <section className="container mt-5">
 
@@ -85,27 +65,7 @@ export const TodoApp = () => {
             <div className="row">
                 <div className="col-5">
 
-                    <form
-                        onSubmit={ handleSubmit }
-                    >
-
-                        <input 
-                            type="text"
-                            name="description"
-                            placeholder="Descripción Tarea"
-                            autoComplete="off"
-                            className="form-control"
-                            value={ formValues.description }
-                            onChange={ handleInputChange }
-                        />
-                        <button 
-                            type="submit"
-                            className="btn btn-outline-primary btn-block mt-2 mb-2"
-                        >
-                            Agregar
-                        </button>
-
-                    </form>
+                    <TodoForm handleAddTodo={ handleAddTodo } />
 
                 </div>
                 <div className="col-7">
