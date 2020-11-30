@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const TodoItem = ({ idx, todo, handleToggle, handleDelete }) => {
     return (
@@ -16,4 +17,11 @@ export const TodoItem = ({ idx, todo, handleToggle, handleDelete }) => {
             >Borrar</button>
         </li>
     )
+}
+
+TodoItem.propTypes = {
+    idx: PropTypes.number.isRequired,
+    todo: PropTypes.object.isRequired,
+    handleDelete: PropTypes.func.isRequired,
+    handleToggle: PropTypes.func.isRequired
 }
