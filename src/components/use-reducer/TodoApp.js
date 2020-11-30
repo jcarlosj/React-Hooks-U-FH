@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 
 /** Hooks */
 import { useForm } from '../../hooks/useForm';
@@ -8,25 +8,26 @@ import { todoReducer } from './todoReducer';
 
 import './todo-app.css';
 
-
-/** Estado Inicial */
-const initialState = [{
-    id: new Date().getTime(),
-    description: 'Aprender Angular',
-    done: false
-}];
+/** Establecera el initialState del Reducer */
+const init = () => {
+    return [{
+        id: new Date().getTime(),
+        description: 'Aprender Angular',
+        done: false
+    }];
+}
 
 /** Functional Component */
 export const TodoApp = () => {
 
     const 
-        [ todos, dispatch ] = useReducer( todoReducer, initialState ),
+        [ todos, dispatch ] = useReducer( todoReducer, [], init ),      //  Establece State usando Inicialización diferida del Reducer. permite extraer la lógica para calcular el estado inicial fuera del reductor. También es útil para reiniciar el estado luego en respuesta a una acción. 
         [ formValues, handleInputChange, reset ] = useForm({
             description: ''
         });
 
     console.log( formValues );
-
+    
     const handleSubmit = event => {
         event.preventDefault();
 
