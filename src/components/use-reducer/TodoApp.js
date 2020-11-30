@@ -10,11 +10,7 @@ import './todo-app.css';
 
 /** Establecera el initialState del Reducer */
 const init = () => {
-    return [{
-        id: new Date().getTime(),
-        description: 'Aprender Angular',
-        done: false
-    }];
+    return JSON.parse( localStorage.getItem( 'todos' ) ) || [];
 }
 
 /** Functional Component */
@@ -27,7 +23,11 @@ export const TodoApp = () => {
         });
 
     console.log( formValues );
-    
+
+    useEffect(() => {
+        localStorage.setItem( 'todos', JSON.stringify( todos ) );   //  Guardar data en el LocalStorage
+    }, [ todos ] );
+
     const handleSubmit = event => {
         event.preventDefault();
 
