@@ -16,9 +16,27 @@ const initialState = [{
 /** Functional Component */
 export const TodoApp = () => {
 
-    const [ todos ] = useReducer( todoReducer, initialState );
+    const [ todos, dispatch ] = useReducer( todoReducer, initialState );
 
     console.log( todos );
+
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        const newTodo = {
+            id: new Date().getTime(),
+            description: 'Aprender Vue',
+            done: false
+        }
+
+        const action = {
+            type: 'ADD',
+            payload: newTodo
+        }
+
+        dispatch( action );
+
+    }
 
     return (
         <section className="container mt-5">
@@ -30,7 +48,9 @@ export const TodoApp = () => {
             <div className="row">
                 <div className="col-5">
 
-                    <form>
+                    <form
+                        onSubmit={ handleSubmit }
+                    >
 
                         <input 
                             type="text"
@@ -40,7 +60,7 @@ export const TodoApp = () => {
                             className="form-control"
                         />
                         <button 
-                            type="button"
+                            type="submit"
                             className="btn btn-outline-primary btn-block mt-2 mb-2"
                         >
                             Agregar
@@ -58,7 +78,7 @@ export const TodoApp = () => {
                         </>
                     )}
 
-                    <ul class="list-group list-group-flush">
+                    <ul className="list-group list-group-flush">
                         {    todos.map( ( todo, idx ) => (
                                     <li 
                                         key={ todo.id }
