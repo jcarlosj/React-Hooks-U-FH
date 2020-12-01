@@ -8,11 +8,7 @@ import { UserContext } from './UserContext';
 export const MainApp = () => {
 
     /** Valores que deseamos pasar al Contexto (estará disponible para todo el árbol de nodos que abrace el context) */
-    const [ user, setUser ] = useState( { 
-        id: new Date().getTime(),
-        name: "Eva Sofia", 
-        email: "eva.sofia@correo.co" 
-    } );
+    const [ user, setUser ] = useState( {} );
 
     return (
         <UserContext.Provider 

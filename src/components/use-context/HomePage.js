@@ -15,6 +15,7 @@ export const HomePage = () => {
     return (
         <section className="container mt-5">
             <h1>Home Page</h1>
+            {   user.name && <p>Hola, { user.name }.</p> }
             <hr />
             <pre>{ JSON.stringify( user, null, 4 ) }</pre>
         </section>
