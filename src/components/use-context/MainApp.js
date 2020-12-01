@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /** Components */
 import { AppRouter } from './AppRouter';
@@ -8,14 +8,19 @@ import { UserContext } from './UserContext';
 export const MainApp = () => {
 
     /** Valores que deseamos pasar al Contexto (estará disponible para todo el árbol de nodos que abrace el context) */
-    const user = {
+    const [ user, setUser ] = useState( { 
         id: new Date().getTime(),
-        name: 'Eva Sofia',
-        email: 'eva.sofia@correo.co'
-    }
+        name: "Eva Sofia", 
+        email: "eva.sofia@correo.co" 
+    } );
 
     return (
-        <UserContext.Provider value={ user }>   
+        <UserContext.Provider 
+            value={ {
+                user, 
+                setUser
+            } }
+        >   
             <AppRouter />
         </UserContext.Provider>
     )
