@@ -52,4 +52,31 @@ describe( 'useForm Custom Hook', () => {
 
     } );
 
+    test( 'debe re-establecer los valores iniciales del formulario', () => {
+
+        const 
+            { result } = renderHook( () => useForm( initialForm ) ),        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+            [ , handleInputChange, reset ] = result.current;
+
+        // console.log( result.current );
+    
+        act( () => {    //  Simula la accion de nuestro Hook permitiendonos actualizar valores dentro de él.
+            handleInputChange({
+                target: {           //  Simula evento usado por handleInputChange con sus propiedades
+                    name: 'name',
+                    value: 'Melissa'
+                }
+            });
+
+            reset();
+
+        });
+
+        const [ formValues ] = result.current;
+        
+        // console.log( formValues );
+        expect( formValues ).toEqual( initialForm );
+
+    } );
+
 } );
