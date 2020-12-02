@@ -9,7 +9,7 @@ export const useForm = ( initialState = {} ) => {
     }
 
     const handleInputChange = ({ target }) => {
-        console.log( '>', target.name, target.value );
+        // console.log( '>', target.name, target.value );
 
         setValues({      //  Actualiza State
             ...values,
