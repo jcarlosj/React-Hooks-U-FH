@@ -13,12 +13,15 @@ describe( 'useForm Custom Hook', () => {
 
     test( 'debe retornar 1 object y 2 funciones por defecto', () => {
 
-        const { result } = renderHook( () => useForm() );        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+        const 
+            { result } = renderHook( () => useForm( initialForm ) ),        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+            [ formValues, handleInputChange, reset ] = result.current;
 
         // console.log( result.current );
-        expect( typeof result.current[ 0 ] ).toBe( 'object' );
-        expect( typeof result.current[ 1 ] ).toBe( 'function' );
-        expect( typeof result.current[ 2 ] ).toBe( 'function' );
+        expect( typeof formValues ).toBe( 'object' );
+        expect( formValues ).toEqual( initialForm );
+        expect( typeof handleInputChange ).toBe( 'function' );
+        expect( typeof reset ).toBe( 'function' );
 
     } );
 
