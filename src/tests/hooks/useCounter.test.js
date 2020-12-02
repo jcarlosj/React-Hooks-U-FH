@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { shallow } from 'enzyme';
 
 import { useCounter } from '../../hooks/useCounter';
@@ -26,6 +26,24 @@ describe( 'useCounter Custom Hook', () => {
 
         // console.log( result.current );
         expect( result.current.state ).toBe( arg );
+
+    } );
+
+    test( 'debe incrementar state en 1', () => {
+
+        const
+            arg = 99, 
+            { result } = renderHook( () => useCounter( arg ) ),        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+            { increment } = result.current;                            //  Destructuracion
+
+        act( () => {        //      Simula la accion de nuestro Hook permitiendonos actualizar valores dentro de él.
+            increment();
+        });
+
+        const { state } = result.current;
+
+        // console.log( state, arg + 1 );
+        expect( state ).toBe( arg + 1 );
 
     } );
 
