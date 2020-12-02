@@ -18,4 +18,15 @@ describe( 'useCounter Custom Hook', () => {
 
     } );
 
+    test( 'debe retornar valor por defecto pasado como argumento', () => {
+
+        const
+            arg = 99, 
+            { result } = renderHook( () => useCounter( arg ) );        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+
+        // console.log( result.current );
+        expect( result.current.state ).toBe( arg );
+
+    } );
+
 } );
