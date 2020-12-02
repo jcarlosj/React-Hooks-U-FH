@@ -30,10 +30,27 @@ describe( 'useFetch Custom Hook', () => {
 
         const { data, loading, error } = result.current;              //  Valores iniciales
 
-        console.log( result.current );
+        // console.log( result.current );
         expect( data.length ).toBe( 1 );
         expect( loading ).toBe( false );
         expect( error ).toBe( null );
+
+    } );
+
+    test( 'debe manejar error al no obtener la data de la peticion', async () => {
+
+        const 
+            url = `https://reqres.in/aphi/users?page=2`,
+            { result, waitForNextUpdate } = renderHook( () => useFetch( url ) );       //  Peticion Sincrona
+            
+        await waitForNextUpdate();      //  Espera que se resuelva la peticion
+
+        const { data, loading, error } = result.current;              //  Valores iniciales
+
+        // console.log( result.current );
+        expect( data ).toBe( null );
+        expect( loading ).toBe( false );
+        expect( error ).toBe( 'No se pudo obtener la data' );
 
     } );
 

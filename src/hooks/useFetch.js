@@ -34,7 +34,7 @@ export const useFetch = ( url ) => {
             .then( data => {
 
                 //  TO DO: Evaluar que viene la data
-                setTimeout( () => {
+                // setTimeout( () => {
 
                     /** Controlamos la peticion de acuerdo al estado de montaje del componente */
                     if( isMounted.current ) {
@@ -50,7 +50,16 @@ export const useFetch = ( url ) => {
                         console.log( `Se acaba de prevenir la actualización de estado de un componente desmontado` );
                     }
 
-                }, 4000 );
+                // }, 4000 );
+
+            })
+            .catch( error => {
+                // console.log( error );
+                setState({
+                    data: null,
+                    loading: false,
+                    error: 'No se pudo obtener la data'
+                });
 
             });
 
