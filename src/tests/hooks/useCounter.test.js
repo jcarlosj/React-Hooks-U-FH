@@ -65,4 +65,21 @@ describe( 'useCounter Custom Hook', () => {
 
     } );
 
+    test( 'debe reestablecer el state por defecto', () => {
+
+        const
+            arg = 99, 
+            { result } = renderHook( () => useCounter( arg ) );        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+
+  
+        act( () => {        //      Simula la accion de nuestro Hook permitiendonos actualizar valores dentro de él.
+            result.current.increment();     //  arg + 1
+            result.current.reset();         //  arg (valor por defecto)
+        });
+        
+        // console.log( result.current.state, arg );
+        expect( result.current.state ).toBe( arg );
+
+    } );
+
 } );
