@@ -47,4 +47,22 @@ describe( 'useCounter Custom Hook', () => {
 
     } );
 
+    test( 'debe decrementar state en 1', () => {
+
+        const
+            arg = 99, 
+            { result } = renderHook( () => useCounter( arg ) ),        //  renderHook(): Renderiza el Hook (debemos pasar el Hook como el retorno de una funcion)
+            { decrement } = result.current;                            //  Destructuracion
+
+        act( () => {        //      Simula la accion de nuestro Hook permitiendonos actualizar valores dentro de él.
+            decrement();
+        });
+
+        const { state } = result.current;
+
+        // console.log( state, arg - 1 );
+        expect( state ).toBe( arg - 1 );
+
+    } );
+
 } );
