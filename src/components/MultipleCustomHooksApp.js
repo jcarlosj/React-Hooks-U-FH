@@ -12,7 +12,7 @@ export const MultipleCustomHooksApp = () => {
         { loading, data } = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` ),
         { author, quote } = !!data && data[ 0 ];    //  !!null -> Convertir un null en false
 
-    console.log( counter , ' - ' , quote, '(', author, ')' );
+    // console.log( counter , ' - ' , quote, '(', author, ')' );
     // console.log( Object.keys( state ) );
 
     return (
@@ -26,7 +26,7 @@ export const MultipleCustomHooksApp = () => {
                     :   <>
 
                             <blockquote className="blockquote text-right">
-                                <p className="mb-0">{ quote }</p>
+                                <p className="mb-0 quote">{ quote }</p>
                                 <footer className="blockquote-footer">{ author }</footer>
                             </blockquote>
 
