@@ -37,4 +37,11 @@ describe( '<TodoItem />', () => {
         
     } );
 
+    test( 'debe invocar la funcion handleDelete', () => {
+
+        wrapper.find( 'button' ).simulate( 'click' );
+        expect( handleDelete ).toHaveBeenCalledWith( demoDataTodos[ index ].id );
+        
+    } );
+
 } );
