@@ -18,4 +18,24 @@ describe( 'todoReducer Reducer', () => {
 
     } );
 
+    test( 'debe agregar un TODO al state', () => {
+
+        const
+            newTodo = {
+                id: demoDataTodos.length + 1,
+                description: 'Aprender Python',
+                done: false
+            },
+            action = { 
+                type: 'ADD', 
+                payload: newTodo 
+            }, 
+            state = todoReducer( demoDataTodos, action );
+
+            // console.log( state );
+            expect( state.length ).toBe( demoDataTodos.length + 1 );
+            expect( state ).toEqual( [ ...demoDataTodos, newTodo ] );
+
+    } );
+
 } );
