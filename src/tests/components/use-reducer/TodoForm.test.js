@@ -18,4 +18,15 @@ describe( '<TodoForm />', () => {
 
     } );
 
+    test( 'NO debe invocar handleAddTodo', () => {
+
+        const $formSubmit = wrapper.find( 'form' ).prop( 'onSubmit' );      //  Obtengo la funcion enlazada a la propiedad onSubmit de la etiqueta form
+        
+        // console.log( $formSubmit );
+        $formSubmit({ preventDefault(){} });                                //  Simula handleAddTodo y pasamos como argumento la simulacion del event
+
+        expect( handleAddTodo ).toHaveBeenCalledTimes( 0 );                 //  Verifica que la funcion handleAddTodo no ha sido invocada
+
+    } );
+
 } );
