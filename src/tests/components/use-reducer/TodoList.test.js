@@ -27,4 +27,11 @@ describe( '<TodoList />', () => {
 
     } );
 
+    test( 'debe desplegar la cantidad esperada de <TodoItem />', () => {
+
+        // console.log( wrapper.debug() );
+        expect( wrapper.find( 'TodoItem' ).length ).toBe( demoDataTodos.length );
+
+    } );
+
 } );
