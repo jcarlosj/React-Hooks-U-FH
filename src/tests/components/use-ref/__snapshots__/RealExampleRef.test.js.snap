@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RealExampleRef /> debe desplegar correctamente 1`] = `
+<section
+  className="container mt-5"
+>
+  <h1>
+    Real Example
+  </h1>
+  <p>
+    Usando el Hook useRef
+  </p>
+  <hr />
+  <div
+    className="form-group mt-3"
+  >
+    <button
+      className="btn btn-secondary"
+      onClick={[Function]}
+    >
+      Show
+    </button>
+  </div>
+</section>
+`;
