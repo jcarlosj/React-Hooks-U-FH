@@ -51,4 +51,22 @@ describe( '<TodoItem />', () => {
         
     } );
 
+    test( 'debe existir clase complete si TODO.done = true', () => {
+
+        const todo = demoDataTodos[ 0 ];
+            
+        todo.done = true;
+        console.log( todo );    //  { id: 1, description: 'Aprender Vue', done: true }
+
+        const wrapper = shallow( 
+            <TodoItem 
+                todo={ todo }
+            />
+        );
+
+        console.log( wrapper.html() );      //  2. Aprender Vue
+        expect( wrapper.find( 'p' ).hasClass( 'complete' ) ).toBe( true );
+        
+    } );
+
 } );
