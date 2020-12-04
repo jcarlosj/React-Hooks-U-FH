@@ -44,4 +44,11 @@ describe( '<TodoItem />', () => {
         
     } );
 
+    test( 'debe mostrar la descripcion del TODO correctamente', () => {
+
+        // console.log( wrapper.find( 'p.task-description' ).text() );      
+        expect( wrapper.find( 'p.task-description' ).text().trim() ).toBe( `${ index + 1 }. ${ demoDataTodos[ index ].description }` );     //  2. Aprender Angular
+        
+    } );
+
 } );
