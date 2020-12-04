@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoItem /> debe desplegar correctamente 1`] = `
+<li
+  className="list-group-item d-flex justify-content-between align-items-center"
+  key="2"
+>
+  <p
+    className="task-description false"
+    onClick={[Function]}
+  >
+    2
+    . 
+    Aprender Angular
+  </p>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+  >
+    Borrar
+  </button>
+</li>
+`;
