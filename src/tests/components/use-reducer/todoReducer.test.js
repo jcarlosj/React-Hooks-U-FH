@@ -38,4 +38,20 @@ describe( 'todoReducer Reducer', () => {
 
     } );
 
+    test( 'debe eliminar un TODO al state', () => {
+
+        const
+            id = 2,
+            action = { 
+                type: 'DELETE', 
+                payload: id 
+            }, 
+            state = todoReducer( demoDataTodos, action );
+
+            console.log( state );
+            expect( state.length ).toBe( demoDataTodos.length - 1 );
+            expect( state ).toEqual( demoDataTodos.filter( todo => todo.id !== id ) );
+
+    } );
+
 } );
