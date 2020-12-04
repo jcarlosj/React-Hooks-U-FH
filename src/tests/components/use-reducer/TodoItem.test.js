@@ -30,4 +30,11 @@ describe( '<TodoItem />', () => {
         
     } );
 
+    test( 'debe invocar la funcion handleToggle', () => {
+
+        wrapper.find( 'p' ).simulate( 'click' );
+        expect( handleToggle ).toHaveBeenCalledWith( demoDataTodos[ index ].id );
+        
+    } );
+
 } );
