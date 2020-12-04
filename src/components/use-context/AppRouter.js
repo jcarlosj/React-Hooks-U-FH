@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { version } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,6 +18,9 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <NavBar />
+                <section className="container">
+                    <p className="text-right">React v{ version }</p>
+                </section>
                 <Switch>
                     <Route exact path="/" component={ HomePage } />
                     <Route exact path="/about" component={ AboutPage } />
