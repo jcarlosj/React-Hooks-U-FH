@@ -9,15 +9,19 @@ import { demoDataTodos } from '../../fixtures/demoTodos';
 
 describe( '<TodoItem />', () => {
 
-    const wrapper = shallow( 
-        <TodoItem 
-            key={ demoDataTodos[ 1 ].id }
-            idx={ 1 } 
-            todo={ demoDataTodos[ 1 ] }
-            handleToggle={ () => {} }
-            handleDelete={ () => {} }
-        />
-    );
+    const
+        index = 1,
+        handleToggle = jest.fn(),
+        handleDelete = jest.fn(), 
+        wrapper = shallow( 
+            <TodoItem 
+                key={ demoDataTodos[ index ].id }
+                idx={ index } 
+                todo={ demoDataTodos[ index ] }
+                handleToggle={ handleToggle }
+                handleDelete={ handleDelete }
+            />
+        );
 
     test( 'debe desplegar correctamente', () => {
 
