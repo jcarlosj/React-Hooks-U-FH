@@ -48,9 +48,25 @@ describe( 'todoReducer Reducer', () => {
             }, 
             state = todoReducer( demoDataTodos, action );
 
-            console.log( state );
+            // console.log( state );
             expect( state.length ).toBe( demoDataTodos.length - 1 );
             expect( state ).toEqual( demoDataTodos.filter( todo => todo.id !== id ) );
+
+    } );
+
+    test( 'debe cambiar estado de finalizacion de un TODO', () => {
+
+        const
+            id = 2,         //  Aprender Angular
+            action = { 
+                type: 'TOGGLE', 
+                payload: id 
+            }, 
+            state = todoReducer( demoDataTodos, action );
+
+        // console.log( state[ 2 ].done );     //  Aprender Angular
+        expect( state[ 1 ].done ).toBe( true );
+        expect( state[ 2 ] ).toEqual( demoDataTodos[ 2 ] );     //  Aprender Jest
 
     } );
 
