@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoApp /> debe desplegar correctamente 1`] = `
+<section
+  className="container mt-5"
+>
+  <h1>
+    To Do ( 
+    0
+     ) 
+  </h1>
+  <p>
+    Usando el Hook useReducer
+  </p>
+  <hr />
+  <div
+    className="row"
+  >
+    <div
+      className="col-5"
+    >
+      <TodoForm
+        handleAddTodo={[Function]}
+      />
+    </div>
+    <div
+      className="col-7"
+    >
+      <TodoList
+        handleDelete={[Function]}
+        handleToggle={[Function]}
+        todos={Array []}
+      />
+    </div>
+  </div>
+</section>
+`;
