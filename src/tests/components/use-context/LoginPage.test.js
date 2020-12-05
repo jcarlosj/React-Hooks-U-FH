@@ -25,4 +25,17 @@ describe( '<LoginPage />', () => {
 
     } );
 
+    test( 'debe ejecutar setUser con el argumento esperado', () => {
+
+        /** Esta prueba evalua al componente hijo, para ello se debe usar 'mount' para montar el componente */
+        // wrapper.find( 'button' ).prop( 'onClick' ) ();
+        // expect( setUser ).toHaveBeenCalledWith({ 
+        //     id: expect.any( Number ),
+        //     name: "Eva", 
+        //     email: "eva@correo.co" 
+        // });
+
+    } );
+
+
 } );
