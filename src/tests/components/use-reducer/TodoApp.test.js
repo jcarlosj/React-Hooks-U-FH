@@ -36,8 +36,23 @@ describe( '<TodoApp />', () => {
         // console.log( wrapper.find( 'h1' ).text() );
         expect( wrapper.find( 'h1' ).text().trim() ).toBe( 'To Do ( 2 )' );
         // expect( localStorage.setItem ).toHaveBeenCalledTimes( 2 );      //  Solo puede Asegurar que se ejecutan usando mount quien podrá deducir el comportamento del Componente Hijo
-        
 
     } );
+
+    test( 'debe eliminar un TODO', () => {
+
+        /** Agrega 2 TODOs */
+        wrapper.find( 'TodoForm' ).prop( 'handleAddTodo' ) ( demoDataTodos[ 0 ] );
+        wrapper.find( 'TodoForm' ).prop( 'handleAddTodo' ) ( demoDataTodos[ 1 ] );
+
+        expect( wrapper.find( 'h1' ).text().trim() ).toBe( 'To Do ( 2 )' );
+
+        /** Elimina un TODO */
+        wrapper.find( 'TodoList' ).prop( 'handleDelete' ) ( demoDataTodos[ 0 ].id );
+
+        expect( wrapper.find( 'h1' ).text().trim() ).toBe( 'To Do ( 1 )' );
+
+    } );
+
 
 } );
